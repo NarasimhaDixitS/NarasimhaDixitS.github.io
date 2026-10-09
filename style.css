@@ -1,0 +1,112 @@
+/* Waypoint's own tokens, so the site and the app are recognisably one thing.
+   Values lifted from Sources/Theme/ColorTokens.swift and AccentSwatch.swift
+   rather than approximated. */
+:root {
+  --page:    #F5F5F3;   /* surface0, light */
+  --card:    #FFFFFF;   /* surface1, light */
+  --ink:     #2C2C2A;   /* textPrimary */
+  --ink-2:   #53524E;   /* textSecondary */
+  --ink-3:   #6F6E69;   /* textMuted */
+  --rule:    #E5E3DB;   /* border */
+  --accent:  #0F7380;   /* teal, the default swatch */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page:   #1C1C1A;
+    --card:   #242422;
+    --ink:    #F1EFE8;
+    --ink-2:  #B4B2A9;
+    --ink-3:  #9A998F;
+    --rule:   #3A3A37;
+    --accent: #17B2C6;  /* the teal swatch's dark-scheme pair, 6.09:1 */
+  }
+}
+:root[data-theme="dark"] {
+  --page: #1C1C1A; --card: #242422; --ink: #F1EFE8; --ink-2: #B4B2A9;
+  --ink-3: #9A998F; --rule: #3A3A37; --accent: #17B2C6;
+}
+
+/* The system stack resolves to SF Pro on an iPhone, which is the app's own face —
+   so on the device almost every visitor will be holding, the site is set in the
+   same type as the thing it documents. */
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap {
+  /* Running text near 65 characters. */
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 5rem;
+}
+
+header { padding-bottom: 1.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+
+.mark {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.updated { color: var(--ink-3); font-size: 0.9375rem; margin: 0; }
+
+h2 {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.005em;
+  margin: 2.75rem 0 0.5rem;
+}
+
+p, ul { margin: 0 0 1rem; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: 0.375rem; }
+li::marker { color: var(--ink-3); }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+strong { font-weight: 620; }
+
+/* One lifted block per page, for the single thing a reader is most likely to
+   have come for — not a card treatment stamped on every section. */
+.note {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1rem 1.125rem;
+  margin: 1.5rem 0;
+}
+.note p:last-child { margin-bottom: 0; }
+
+dl { margin: 0; }
+dt { font-weight: 620; margin-top: 1.75rem; }
+dd { margin: 0.25rem 0 0; color: var(--ink-2); }
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-size: 0.9375rem;
+}
+footer a { color: var(--ink-2); }
